@@ -7,8 +7,8 @@ type Options struct {
 type SortType string
 
 const (
-	Bubble    SortType = "bubble"
-	Quicksort SortType = "quicksort"
+	Bubble SortType = "bubble"
+	Quick  SortType = "quick"
 )
 
 func DefaultCompare(a, b int) bool {

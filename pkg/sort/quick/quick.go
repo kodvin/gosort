@@ -1,4 +1,4 @@
-package quicksort
+package quick
 
 import "github.com/tobe-decided/gosort/pkg/sort/common"
 
