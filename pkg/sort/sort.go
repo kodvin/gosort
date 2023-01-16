@@ -3,6 +3,7 @@ package sort
 import (
 	"github.com/tobe-decided/gosort/pkg/sort/bubble"
 	"github.com/tobe-decided/gosort/pkg/sort/common"
+	"github.com/tobe-decided/gosort/pkg/sort/insertion"
 	"github.com/tobe-decided/gosort/pkg/sort/merge"
 	"github.com/tobe-decided/gosort/pkg/sort/quick"
 )
@@ -15,6 +16,8 @@ func Sort(s common.SortType, content []int, opts *common.Options) []int {
 		return quick.Sort(content, opts)
 	case common.Merge:
 		return merge.Sort(content, opts)
+	case common.Insertion:
+		return insertion.Sort(content, opts)
 	}
 	return content
 }
