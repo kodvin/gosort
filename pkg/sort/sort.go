@@ -6,6 +6,7 @@ import (
 	"github.com/tobe-decided/gosort/pkg/sort/insertion"
 	"github.com/tobe-decided/gosort/pkg/sort/merge"
 	"github.com/tobe-decided/gosort/pkg/sort/quick"
+	"github.com/tobe-decided/gosort/pkg/sort/selection"
 )
 
 func Sort(s common.SortType, content []int, opts *common.Options) []int {
@@ -18,6 +19,10 @@ func Sort(s common.SortType, content []int, opts *common.Options) []int {
 		return merge.Sort(content, opts)
 	case common.Insertion:
 		return insertion.Sort(content, opts)
+	case common.Selection:
+		return selection.Sort(content, opts)
+	default:
+		panic("not implemented")
 	}
 	return content
 }
