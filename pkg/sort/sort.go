@@ -10,19 +10,34 @@ import (
 	"github.com/tobe-decided/gosort/pkg/sort/selection"
 )
 
-func Sort(s common.SortType, content []int, opts *common.Options) []int {
+type SortType string
+
+const (
+	Bubble    SortType = "bubble"
+	Quick     SortType = "quick"
+	Merge     SortType = "merge"
+	Insertion SortType = "insertion"
+	Selection SortType = "selection"
+	Heap      SortType = "heap"
+)
+
+var AllSortTypes [6]SortType = [...]SortType{
+	"bubble", "quick", "merge", "insertion", "selection", "heap",
+}
+
+func Sort(s SortType, content []int, opts *common.Options) []int {
 	switch s {
-	case common.Bubble:
+	case Bubble:
 		return bubble.Sort(content, opts)
-	case common.Quick:
+	case Quick:
 		return quick.Sort(content, opts)
-	case common.Merge:
+	case Merge:
 		return merge.Sort(content, opts)
-	case common.Insertion:
+	case Insertion:
 		return insertion.Sort(content, opts)
-	case common.Selection:
+	case Selection:
 		return selection.Sort(content, opts)
-	case common.Heap:
+	case Heap:
 		return heap.Sort(content, opts)
 	default:
 		panic(s + " method not implemented")

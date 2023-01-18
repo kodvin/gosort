@@ -14,7 +14,7 @@ var initial []int = []int{1, 101, 3, 150, 4, 6, 10, 2, 100, 150, 200, 5}
 func TestNumbers_DefaultSorting(t *testing.T) {
 	unordered := make([]int, len(initial))
 
-	for _, sType := range common.AllSortTypes {
+	for _, sType := range AllSortTypes {
 		copy(unordered, initial)
 		Sort(sType, unordered, nil)
 		assert.Equal(t, expectedAscending, unordered, "SortType: "+sType)
@@ -23,7 +23,7 @@ func TestNumbers_DefaultSorting(t *testing.T) {
 
 func TestNumbers_CustomSorting_Ascending(t *testing.T) {
 	unordered := make([]int, len(initial))
-	for _, sType := range common.AllSortTypes {
+	for _, sType := range AllSortTypes {
 		copy(unordered, initial)
 		Sort(sType, unordered, &common.Options{Fn: func(a, b int) bool { return (a > b) }})
 		assert.Equal(t, expectedAscending, unordered, "SortType: "+sType)
@@ -33,7 +33,7 @@ func TestNumbers_CustomSorting_Ascending(t *testing.T) {
 func TestNumbers_CustomSorting_Descending(t *testing.T) {
 	unordered := make([]int, len(initial))
 
-	for _, sType := range common.AllSortTypes {
+	for _, sType := range AllSortTypes {
 		copy(unordered, initial)
 		Sort(sType, unordered, &common.Options{Fn: func(a, b int) bool { return (a < b) }})
 		assert.Equal(t, expectedDescending, unordered, "SortType: "+sType)
