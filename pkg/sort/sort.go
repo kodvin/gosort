@@ -3,6 +3,7 @@ package sort
 import (
 	"github.com/tobe-decided/gosort/pkg/sort/bubble"
 	"github.com/tobe-decided/gosort/pkg/sort/common"
+	"github.com/tobe-decided/gosort/pkg/sort/heap"
 	"github.com/tobe-decided/gosort/pkg/sort/insertion"
 	"github.com/tobe-decided/gosort/pkg/sort/merge"
 	"github.com/tobe-decided/gosort/pkg/sort/quick"
@@ -21,8 +22,9 @@ func Sort(s common.SortType, content []int, opts *common.Options) []int {
 		return insertion.Sort(content, opts)
 	case common.Selection:
 		return selection.Sort(content, opts)
+	case common.Heap:
+		return heap.Sort(content, opts)
 	default:
-		panic("not implemented")
+		panic(s + " method not implemented")
 	}
-	return content
 }

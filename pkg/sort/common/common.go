@@ -12,10 +12,11 @@ const (
 	Merge     SortType = "merge"
 	Insertion SortType = "insertion"
 	Selection SortType = "selection"
+	Heap      SortType = "heap"
 )
 
-var AllSortTypes [5]SortType = [...]SortType{
-	"bubble", "quick", "merge", "insertion", "selection",
+var AllSortTypes [6]SortType = [...]SortType{
+	"bubble", "quick", "merge", "insertion", "selection", "heap",
 }
 
 func DefaultCompare(a, b int) bool {
