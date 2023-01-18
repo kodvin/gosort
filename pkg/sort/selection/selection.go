@@ -2,14 +2,15 @@ package selection
 
 import (
 	"github.com/tobe-decided/gosort/pkg/sort/common"
+	"golang.org/x/exp/constraints"
 )
 
-func Sort(nums []int, opts *common.Options) []int {
+func Sort[T constraints.Ordered](nums []T, opts *common.Options[T]) []T {
 	return sortNumbers(nums, opts)
 }
 
-func sortNumbers(nums []int, opts *common.Options) []int {
-	cmp := common.DefaultCompare
+func sortNumbers[T constraints.Ordered](nums []T, opts *common.Options[T]) []T {
+	cmp := common.DefaultCompare[T]
 	if opts != nil {
 		cmp = opts.Fn
 	}

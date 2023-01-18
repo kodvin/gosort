@@ -1,9 +1,11 @@
 package common
 
-type Options struct {
-	Fn func(a, b int) bool
+import "golang.org/x/exp/constraints"
+
+type Options[T constraints.Ordered] struct {
+	Fn func(a, b T) bool
 }
 
-func DefaultCompare(a, b int) bool {
-	return (a > b)
+func DefaultCompare[T constraints.Ordered](i, j T) bool {
+	return i > j
 }

@@ -8,6 +8,7 @@ import (
 	"github.com/tobe-decided/gosort/pkg/sort/merge"
 	"github.com/tobe-decided/gosort/pkg/sort/quick"
 	"github.com/tobe-decided/gosort/pkg/sort/selection"
+	"golang.org/x/exp/constraints"
 )
 
 type SortType string
@@ -25,7 +26,7 @@ var AllSortTypes [6]SortType = [...]SortType{
 	"bubble", "quick", "merge", "insertion", "selection", "heap",
 }
 
-func Sort(s SortType, content []int, opts *common.Options) []int {
+func Sort[T constraints.Ordered](s SortType, content []T, opts *common.Options[T]) []T {
 	switch s {
 	case Bubble:
 		return bubble.Sort(content, opts)

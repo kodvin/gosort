@@ -2,17 +2,18 @@ package heap
 
 import (
 	"github.com/tobe-decided/gosort/pkg/sort/common"
+	"golang.org/x/exp/constraints"
 )
 
-func Sort(nums []int, opts *common.Options) []int {
+func Sort[T constraints.Ordered](nums []T, opts *common.Options[T]) []T {
 	return sortNumbers(nums, opts)
 }
 
-func sortNumbers(nums []int, opts *common.Options) []int {
+func sortNumbers[T constraints.Ordered](nums []T, opts *common.Options[T]) []T {
 	return heapSort(nums, opts)
 }
 
-func heapSort(nums []int, opts *common.Options) []int {
+func heapSort[T constraints.Ordered](nums []T, opts *common.Options[T]) []T {
 	for i := len(nums)/2 - 1; i >= 0; i-- {
 		heapify(nums, len(nums), i, opts)
 	}
@@ -24,8 +25,8 @@ func heapSort(nums []int, opts *common.Options) []int {
 	return nums
 }
 
-func heapify(nums []int, size int, rootIndex int, opts *common.Options) {
-	cmp := common.DefaultCompare
+func heapify[T constraints.Ordered](nums []T, size int, rootIndex int, opts *common.Options[T]) {
+	cmp := common.DefaultCompare[T]
 	if opts != nil {
 		cmp = opts.Fn
 	}
