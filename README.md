@@ -1,2 +1,2 @@
 # gosort
-golang practice
+Implementing several sorting algorithms to practice golang
