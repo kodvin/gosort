@@ -6,10 +6,6 @@ import (
 )
 
 func Sort[T constraints.Ordered](nums []T, opts *common.Options[T]) []T {
-	return sortNumbers(nums, opts)
-}
-
-func sortNumbers[T constraints.Ordered](nums []T, opts *common.Options[T]) []T {
 	cmp := common.DefaultCompare[T]
 	if opts != nil {
 		cmp = opts.Fn

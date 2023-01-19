@@ -5,11 +5,7 @@ import (
 	"golang.org/x/exp/constraints"
 )
 
-func Sort[T constraints.Ordered](nums []T, opts *common.Options[T]) []T {
-	return sortNumbers(nums, opts)
-}
-
-func sortNumbers[T constraints.Ordered](nums []T, opt *common.Options[T]) []T {
+func Sort[T constraints.Ordered](nums []T, opt *common.Options[T]) []T {
 	for range nums {
 		for i := 0; i < len(nums)-1; i++ {
 			if opt != nil {

@@ -6,21 +6,18 @@ import (
 )
 
 func Sort[T constraints.Ordered](nums []T, opts *common.Options[T]) []T {
-	return sortNumbers(nums, opts)
-}
-
-func sortNumbers[T constraints.Ordered](nums []T, opts *common.Options[T]) []T {
 	quicksort(nums, 0, len(nums)-1, opts)
 	return nums
 }
 
-func quicksort[T constraints.Ordered](nums []T, low int, high int, opts *common.Options[T]) {
+func quicksort[T constraints.Ordered](nums []T, low int, high int, opts *common.Options[T]) []T {
 	if low < high {
 		pi := partition(nums, low, high, opts)
 
 		quicksort(nums, low, pi-1, opts)
 		quicksort(nums, pi+1, high, opts)
 	}
+	return nums
 }
 
 func partition[T constraints.Ordered](nums []T, low int, high int, opts *common.Options[T]) int {
